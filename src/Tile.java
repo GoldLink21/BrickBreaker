@@ -1,7 +1,7 @@
 public class Tile {
-    //Hopefully got this to work on home PC
+    //Use #s to represent HP
     int x,y;
-    public Tile(){
+    public Tile(int hp){
 
     }
 }
