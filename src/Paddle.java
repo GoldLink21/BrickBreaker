@@ -2,9 +2,10 @@ import java.awt.*;
 
 public class Paddle {
     private int x,y;
-    private final int YSTART = 30,WIDTH = 100,HEIGHT = 20;
+    private final int WIDTH = 100,HEIGHT = 20;
+
     public Paddle(){
-        y = YSTART;
+
     }
 
     public void move(){

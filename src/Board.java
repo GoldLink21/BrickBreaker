@@ -7,23 +7,47 @@ import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
 
+    private final int BOARD_WIDTH = 805,BOARD_HEIGHT = 600;
+
     Ball ball;
     Paddle player;
     Timer timer;
-
-    Tile[][] board;
+    Ground ground;
 
     public Board(){
-        board = new Tile[1][1];
-        setBackground(Color.YELLOW);
-        setPreferredSize(new Dimension(805, 600));
+        setBackground(Color.BLACK);
+        setPreferredSize(new Dimension(BOARD_WIDTH, BOARD_HEIGHT));
+        //With a gap of 7, and a width of 40 this allows 17
+        //blocks horizontally and however many vertically
         ball = new Ball();
         player = new Paddle();
+        ground = new Ground();
 
+    }
+
+    public void gameStart(){
+
+        timer = new Timer(1000/60,this);
+        timer.start();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
+
+
+        repaint();
     }
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        g.setColor(Color.LIGHT_GRAY);
+        ground.paint(g);
+    }
+
+    public int getBOARD_WIDTH(){return BOARD_WIDTH;}
+    public int getBOARD_HEIGHT(){return BOARD_HEIGHT;}
+
 }
