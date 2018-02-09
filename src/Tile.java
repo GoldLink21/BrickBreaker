@@ -7,12 +7,6 @@ public class Tile {
     //Gap is the distance between tiles
     final private int HEIGHT = 20,WIDTH = 40, GAP = 7;
 
-    //Without an hp in the constructor, it auto sets to 0, which means no tile there
-    public Tile(int x, int y){
-        setPosition(x,y);
-        setHp(0);
-    }
-
     public Tile(int x,int y,int hp){
         setPosition(x,y);
         setHp(hp);

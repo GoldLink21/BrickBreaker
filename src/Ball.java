@@ -6,13 +6,18 @@ public class Ball {
 
     double MAXANGLE = 5*Math.PI/12;
 
-    public Ball(){
+    Board board;
 
+    public Ball(Board board){
+        x=0;
+        y=0;
+
+        this.board = board;
     }
 
     public void setPosition(int x, int y){
-        this.x = x;
-        this.y = y;
+        this.x = x-diam/2;
+        this.y = y-diam/2;
     }
 
     public void move(){

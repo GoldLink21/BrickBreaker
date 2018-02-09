@@ -4,7 +4,7 @@ public class Ground {
 
     Tile[][] ground;
 
-    //Row is how many horizontally, col is how many vertically
+    //Row is how many horizontally (10), col is how many vertically
     private final int TILE_COLUMN = 10,TILE_ROW = 17;
 
     public Ground(){
@@ -23,7 +23,7 @@ public class Ground {
     public void paint(Graphics g){
         for(int col=TILE_COLUMN-1;col>=0;col--){
             for(int row = TILE_ROW-1;row>=0;row--){
-                if(ground[row][col].getHp()>0) {
+                if(ground[row][col].getHp()>0){
                     chooseColor(row,col,g);
                     ground[row][col].paint(g);
                 }
