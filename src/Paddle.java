@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Paddle {
     private int x,y;
-    private final int WIDTH = 100,HEIGHT = 20,SPEED = 5;
+    private final int WIDTH = 100,HEIGHT = 20,SPEED = 7;
 
     Game game;
     Ball ball;
@@ -40,7 +40,6 @@ public class Paddle {
     }
 
     public void paint(Graphics g){
-        //if(game.isRightPressed())
         g.fillRect(x,y,WIDTH,HEIGHT);
     }
 

@@ -37,8 +37,9 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
+        ball.move();
         player.move();
+        ball.checkCollisions(player,ground);
         repaint();
     }
 

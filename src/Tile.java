@@ -4,8 +4,8 @@ public class Tile {
     //Use #s to represent HP
     int x,y,hp;
 
-    //Gap is the distance between tiles
-    final private int HEIGHT = 20,WIDTH = 40, GAP = 7;
+    //Gap(7) is the distance between tiles,Width(40),Height(20)
+    final private int HEIGHT = 20,WIDTH = 40, GAP = 47-WIDTH;
 
     public Tile(int x,int y,int hp){
         setPosition(x,y);
@@ -36,5 +36,10 @@ public class Tile {
         this.hp -= amount;
         if(this.hp<0)
             this.hp=0;
+    }
+
+    public void reduceHp(){
+        if(hp>0)
+            hp--;
     }
 }

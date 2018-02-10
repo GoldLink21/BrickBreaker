@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -23,6 +22,7 @@ public class Game extends JFrame implements KeyListener {
 
         pack();
         setLocationRelativeTo(null);
+        board.gameStart();
     }
 
     public static void main(String[]args){
