@@ -58,8 +58,8 @@ public class Ball {
 
 
 
-        for(int col = ground.getColumns();col>=0;col--){
-            for(int row = ground.getRows()-1;row>=0;row--){
+        for(int col = 0;col<ground.getColumns()-1;col++){
+            for(int row = 0;row<ground.getRows()-1;row++){
                 if(ground.getTile(row,col)!=null){
                     Tile temp = ground.getTile(row,col);
                     if((temp.getHp()>0)&&(getBounds().intersects(temp.getBounds()))) {
@@ -69,6 +69,8 @@ public class Ball {
             }
         }
 
+        if(getBounds().intersects(other.getBounds()))
+            dy*=-1;
         /*
         if(x+(diam/2) < paddleX)
             ballX = x + diam;
