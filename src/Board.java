@@ -40,6 +40,7 @@ public class Board extends JPanel implements ActionListener {
         ball.move();
         player.move();
         ball.checkCollisions(player,ground);
+        ground.checkCollision(ball);
         repaint();
     }
 

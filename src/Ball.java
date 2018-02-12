@@ -48,45 +48,27 @@ public class Ball {
     }
 
     public void checkCollisions(Paddle other,Ground ground){
-        /*
-        double paddleX = other.getBounds().getX();
-        double paddleC = other.getBounds().getWidth()/2;
-        double ballX = x;
 
-        double bounceAngle = MAXANGLE * (((paddleX + paddleC) - ballX)/paddleC);
-        */
+        //This is for the paddle
+        if(getBounds().intersects(other.getBounds())){
+            double paddleX = other.getBounds().getX();
+            double paddleC = other.getBounds().getWidth()/2;
+            double ballX = x;
 
+            double bounceAngle = MAXANGLE * (((paddleX + paddleC) - ballX)/paddleC);
 
-
-        for(int col = 0;col<ground.getColumns()-1;col++){
-            for(int row = 0;row<ground.getRows()-1;row++){
-                if(ground.getTile(row,col)!=null){
-                    Tile temp = ground.getTile(row,col);
-                    if((temp.getHp()>0)&&(getBounds().intersects(temp.getBounds()))) {
-                        dy *= -1;
-                    }
-                }
-            }
+            if(x+(diam/2) < paddleX)
+                ballX = x;
+            else if(x + diam/2 > paddleX + other.getBounds().getWidth())
+                ballX = x;
+            else
+                ballX = x + diam/2;
+            dy = (int) -(SPEED * Math.cos(bounceAngle));
+            dx = (int)(SPEED*-Math.sin(bounceAngle));
         }
+        
 
-        if(getBounds().intersects(other.getBounds()))
-            dy*=-1;
-        /*
-        if(x+(diam/2) < paddleX)
-            ballX = x + diam;
-        else if(x + diam/2 > paddleX + other.getBounds().getWidth())
-            ballX = x;
-        else
-            ballX = x + diam/2;
 
-        if(y < board.getHeight()/2){
-            dy=(int)(SPEED*Math.cos(bounceAngle));
-        }
-        if(y > board.getHeight()/2){
-            dy = (int)(SPEED*-Math.cos(bounceAngle));
-        }
-        dx = (int)(SPEED*-Math.sin(bounceAngle));
-        */
     }
 
 }

@@ -42,4 +42,10 @@ public class Tile {
         if(hp>0)
             hp--;
     }
+
+    public void checkCollision(Ball other){
+        if(other.getBounds().intersects(this.getBounds())){
+            reduceHp();
+        }
+    }
 }

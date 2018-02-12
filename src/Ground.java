@@ -3,6 +3,7 @@ import java.awt.*;
 public class Ground {
 
     Tile[][] ground;
+    Ball ball;
 
     //Row is how many horizontally (10), col is how many vertically
     private final int TILE_COLUMN = 10, TILE_ROW = 17;
@@ -66,5 +67,14 @@ public class Ground {
         if ((x >= 0 && x < TILE_ROW)&&(y>=0&&y<TILE_COLUMN))
             return ground[x][y];
         return null;
+    }
+
+    public void checkCollision(Ball other){
+        this.ball = other;
+        for (int col = TILE_COLUMN - 1; col >= 0; col--) {
+            for (int row = TILE_ROW - 1; row >= 0; row--) {
+                ground[row][col].checkCollision(ball);
+            }
+        }
     }
 }
