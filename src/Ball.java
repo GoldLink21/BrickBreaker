@@ -66,9 +66,16 @@ public class Ball {
             dy = (int) -(SPEED * Math.cos(bounceAngle));
             dx = (int)(SPEED*-Math.sin(bounceAngle));
         }
-        
 
+        //Collision for Tiles
 
+        for (int col = ground.getColumns() - 1; col >= 0; col--) {
+            for (int row = ground.getRows() - 1; row >= 0; row--) {
+                if(getBounds().intersects(ground.getBounds(row,col))){
+                    
+                }
+            }
+        }
     }
 
 }
