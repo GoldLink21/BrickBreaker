@@ -38,6 +38,9 @@ public class Ball {
 
     public int getX(){return x;}
     public int getY(){return y;}
+    public int getDiam(){return diam;}
+    public double getDx(){return dx;}
+    public double getDy(){return dy;}
 
     public void paint(Graphics g){
         g.fillOval(x,y,diam,diam);
@@ -45,6 +48,13 @@ public class Ball {
 
     public Rectangle getBounds(){
         return new Rectangle(x, y, diam, diam);
+    }
+
+    public void flipX(){
+        dx*=-1;
+    }
+    public void flipY(){
+        dy*=-1;
     }
 
     public void checkCollisions(Paddle other,Ground ground){
@@ -67,12 +77,14 @@ public class Ball {
             dx = (int)(SPEED*-Math.sin(bounceAngle));
         }
 
+
+
         //Collision for Tiles
 
         for (int col = ground.getColumns() - 1; col >= 0; col--) {
             for (int row = ground.getRows() - 1; row >= 0; row--) {
                 if(getBounds().intersects(ground.getBounds(row,col))){
-                    
+
                 }
             }
         }

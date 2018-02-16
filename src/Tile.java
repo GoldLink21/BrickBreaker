@@ -5,7 +5,7 @@ public class Tile {
     int x,y,hp;
 
     //Gap(7) is the distance between tiles,Width(40),Height(20)
-    final private int HEIGHT = 20,WIDTH = 40, GAP = 47-WIDTH;
+    final private int HEIGHT = 19,WIDTH = 41, GAP = 3;
 
     public Tile(int x,int y,int hp){
         setPosition(x,y);
@@ -44,7 +44,16 @@ public class Tile {
     }
 
     public void checkCollision(Ball other){
-        if(other.getBounds().intersects(this.getBounds())){
+        double right = x+WIDTH-(WIDTH/4.0), left = x+(WIDTH/4.0);
+        double up = y+(HEIGHT/4.0),down = y+HEIGHT-(HEIGHT/4.0);
+        if(other.getBounds().intersects(this.getBounds())&&hp>0){
+
+            if((up>other.getY())||down<other.getY()+other.getDiam())
+                other.flipY();
+
+            if(left>other.getX()||right<other.getX())
+                other.flipX();
+
             reduceHp();
         }
     }

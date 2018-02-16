@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final int BOARD_WIDTH = 805,BOARD_HEIGHT = 600,PADDLE_Y = BOARD_HEIGHT-20;
+    private final int BOARD_WIDTH = 795,BOARD_HEIGHT = 600,PADDLE_Y = BOARD_HEIGHT-20;
 
     Ball ball;
     Paddle player;
