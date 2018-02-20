@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final int BOARD_WIDTH = 795,BOARD_HEIGHT = 600,PADDLE_Y = BOARD_HEIGHT-20;
+    private final int BOARD_WIDTH = 805,BOARD_HEIGHT = 700,PADDLE_Y = BOARD_HEIGHT-30;
 
     Ball ball;
     Paddle player;
@@ -34,26 +34,48 @@ public class Board extends JPanel implements ActionListener {
         timer.start();
     }
 
+    public int getPaddleY(){return PADDLE_Y;}
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(Data.isPlay()) {
+            ball.move();
+            player.move();
+            ball.checkCollisions(player, ground);
+            ground.checkCollision(ball);
+        }
 
-        ball.move();
-        player.move();
-        ball.checkCollisions(player,ground);
-        ground.checkCollision(ball);
         repaint();
     }
 
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        Font scoreFont = new Font("TimesRoman", Font.PLAIN,30);
+        if(Data.isPlay()) {
+            g.setColor(Color.lightGray);
+            g.drawLine(0,PADDLE_Y,getWidth(),PADDLE_Y);
+            g.drawLine(0,PADDLE_Y+1,getWidth(),PADDLE_Y+1);
+            g.setColor(Color.DARK_GRAY);
+            player.paint(g);
+            ground.paint(g);
+            g.setColor(Color.white);
+            ball.paint(g);
+            g.setColor(Color.PINK);
+            g.setFont(scoreFont);
+            //printSimpleString(Data.getScoreString(), 1, getWidth()-50,26,g);
+            g.drawString(Data.getScoreString(),5,26);
+        }
+    }
 
-        g.setColor(Color.GRAY);
-        player.paint(g);
-        ground.paint(g);
-        g.setColor(Color.white);
-
-        ball.paint(g);
+    private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
+        //returns the LENGTH of the STRING parameter to the variable stringLen
+        int stringLen = (int)g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
+        //determines the center of the WIDTH parameter and subtracts the center of the length
+        //to determine the X value to start the string
+        int start = width/2 - stringLen/2;
+        //prints s at the desired X position with adjustment and the desired y.
+        g2d.drawString(s, start + XPos, YPos);
     }
 
 }

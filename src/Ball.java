@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ball {
-    private final int SPEED = 5,diam = 25;;
+    private final int SPEED = 5,diam = 20;;
 
     int x,y;
 
@@ -10,7 +10,6 @@ public class Ball {
     private double MAXANGLE = 5*Math.PI/12;
 
     Board board;
-    Ground ground;
 
     public Ball(Board board){
         this.board = board;

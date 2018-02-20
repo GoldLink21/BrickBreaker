@@ -6,7 +6,7 @@ public class Ground {
     Ball ball;
 
     //Row is how many horizontally (10), col is how many vertically
-    private final int TILE_COLUMN = 10, TILE_ROW = 18;
+    private final int TILE_COLUMN = 10, TILE_ROW = 12;
 
     public Ground() {
         ground = new Tile[TILE_ROW][TILE_COLUMN];
@@ -16,9 +16,19 @@ public class Ground {
     public void fillBoard() {
         for (int col = TILE_COLUMN - 1; col >= 0; col--) {
             for (int row = TILE_ROW - 1; row >= 0; row--) {
-                ground[row][col] = new Tile(row, col, /*TILE_COLUMN - col*/1);
+                ground[row][col] = new Tile(row, col, (TILE_COLUMN - col+1)/2 );
             }
         }
+    }
+
+    public boolean checkBoard(){
+        for (int col = TILE_COLUMN - 1; col >= 0; col--) {
+            for (int row = TILE_ROW - 1; row >= 0; row--) {
+                if(ground[row][col].getHp()>0)
+                    return false;
+            }
+        }
+        return true;
     }
 
     public void paint(Graphics g) {
