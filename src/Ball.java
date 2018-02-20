@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ball {
-    private final int SPEED = 5,diam = 20;;
+    private final int SPEED = 6,diam = 20;;
 
     int x,y;
 
@@ -76,8 +76,6 @@ public class Ball {
             dx = (int)(SPEED*-Math.sin(bounceAngle));
         }
 
-
-
         //Collision for Tiles
 
         for (int col = ground.getColumns() - 1; col >= 0; col--) {
@@ -86,6 +84,11 @@ public class Ball {
 
                 }
             }
+        }
+        if(y+diam/2.0>board.getPaddleY()){
+            Data.setScore(Data.getScore()-50);
+            setPosition(board.getWidth()/2,board.getPaddleY()-15);
+            flipY();
         }
     }
 

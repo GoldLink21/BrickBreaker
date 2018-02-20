@@ -6,7 +6,8 @@ public class Ground {
     Ball ball;
 
     //Row is how many horizontally (10), col is how many vertically
-    private final int TILE_COLUMN = 10, TILE_ROW = 12;
+    //TILE_COLUMN = 10, TILE_ROW = 12
+    private final int TILE_COLUMN = 1, TILE_ROW = 1;
 
     public Ground() {
         ground = new Tile[TILE_ROW][TILE_COLUMN];
@@ -47,16 +48,15 @@ public class Ground {
         switch (tileHp) {
             case 1:g.setColor(Color.RED);break;
             case 2:g.setColor(Color.ORANGE);break;
-            case 3:g.setColor(Color.YELLOW);break;
-            case 4:g.setColor(Color.GREEN);break;
+            case 3:g.setColor(Color.GREEN);break;
+            case 4:g.setColor(Color.CYAN);break;
             case 5:g.setColor(Color.BLUE);break;
-            case 6:g.setColor(Color.CYAN);break;
-            case 7:g.setColor(Color.PINK);break;
-            case 8:g.setColor(Color.MAGENTA);break;
-            case 9:g.setColor(Color.WHITE);break;
-            case 10:g.setColor(Color.lightGray);break;
-            case 11:g.setColor(Color.GRAY);break;
-            case 12:g.setColor(Color.DARK_GRAY);break;
+            case 6:g.setColor(Color.PINK);break;
+            case 7:g.setColor(Color.MAGENTA);break;
+            case 8:g.setColor(Color.WHITE);break;
+            case 9:g.setColor(Color.LIGHT_GRAY);break;
+            case 10:g.setColor(Color.GRAY);break;
+            case 11:g.setColor(Color.DARK_GRAY);break;
             default:g.setColor(Color.getHSBColor(90, 100, 100));break;
         }
     }

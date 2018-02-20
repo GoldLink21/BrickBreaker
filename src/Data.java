@@ -1,5 +1,5 @@
 public class Data {
-    public static boolean isPlay=true,isPause=false,isMenu=false,isEnd=false;
+    public static boolean isPlay=false,isPause=false,isMenu=true,isEnd=false;
 
     public static int score = 0;
 

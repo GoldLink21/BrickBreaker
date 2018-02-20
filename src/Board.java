@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final int BOARD_WIDTH = 805,BOARD_HEIGHT = 700,PADDLE_Y = BOARD_HEIGHT-30;
+    private final int BOARD_WIDTH = 805,BOARD_HEIGHT = 700,PADDLE_Y = BOARD_HEIGHT-40;
 
     Ball ball;
     Paddle player;
@@ -43,6 +43,9 @@ public class Board extends JPanel implements ActionListener {
             player.move();
             ball.checkCollisions(player, ground);
             ground.checkCollision(ball);
+            if(ground.checkBoard()){
+                Data.toggleEnd();
+            }
         }
 
         repaint();
@@ -52,6 +55,7 @@ public class Board extends JPanel implements ActionListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Font scoreFont = new Font("TimesRoman", Font.PLAIN,30);
+        Font endFont = new Font("TimesRoman",Font.BOLD, 40);
         if(Data.isPlay()) {
             g.setColor(Color.lightGray);
             g.drawLine(0,PADDLE_Y,getWidth(),PADDLE_Y);
@@ -61,10 +65,13 @@ public class Board extends JPanel implements ActionListener {
             ground.paint(g);
             g.setColor(Color.white);
             ball.paint(g);
-            g.setColor(Color.PINK);
+            g.setColor(Color.WHITE);
             g.setFont(scoreFont);
             //printSimpleString(Data.getScoreString(), 1, getWidth()-50,26,g);
             g.drawString(Data.getScoreString(),5,26);
+        }else if(Data.isEnd()){
+            g.setFont(endFont);
+            printSimpleString(" You cleared all the tiles with "+Data.getScoreString()+" points ",getWidth(),0,(int)(getHeight()*1.0/3.0),g);
         }
     }
 
