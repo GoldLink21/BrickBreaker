@@ -9,6 +9,8 @@ public class Ground {
     //TILE_COLUMN = 10, TILE_ROW = 12
     private final int TILE_COLUMN = 10, TILE_ROW = 12;
 
+    public static String curColor = "RED";
+
     public Ground() {
         ground = new Tile[TILE_ROW][TILE_COLUMN];
         fillBoard();
@@ -46,20 +48,22 @@ public class Ground {
     public void chooseColor(int row, int col, Graphics g) {
         int tileHp = ground[row][col].getHp();
         switch (tileHp) {
-            case 1:g.setColor(Color.RED);break;
-            case 2:g.setColor(Color.ORANGE);break;
-            case 3:g.setColor(Color.GREEN);break;
-            case 4:g.setColor(Color.CYAN);break;
-            case 5:g.setColor(Color.BLUE);break;
+            case 1:g.setColor(Color.RED);curColor="RED";break;
+            case 2:g.setColor(Color.ORANGE);curColor="ORANGE";break;
+            case 3:g.setColor(Color.GREEN);curColor="GREEN";break;
+            case 4:g.setColor(Color.CYAN);curColor="CYAN";break;
+            case 5:g.setColor(Color.BLUE);curColor="BLUE";break;
             case 6:g.setColor(Color.PINK);break;
             case 7:g.setColor(Color.MAGENTA);break;
             case 8:g.setColor(Color.WHITE);break;
             case 9:g.setColor(Color.LIGHT_GRAY);break;
-            case 10:g.setColor(Color.GRAY);break;
-            case 11:g.setColor(Color.DARK_GRAY);break;
+            case 10:g.setColor(Color.GRAY);curColor="";break;
+            case 11:g.setColor(Color.DARK_GRAY);curColor="DARK_GREY";break;
             default:g.setColor(Color.getHSBColor(90, 100, 100));break;
         }
     }
+
+    public static String getCurColor(){return curColor;}
 
     public Rectangle getBounds(int x, int y) {
         return ground[x][y].getBounds();

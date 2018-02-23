@@ -2,7 +2,7 @@ public class Data {
     public static boolean isPlay=false,isPause=false,isMenu=true,isEnd=false;
 
     //Used to make testing so much easier
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public static int score = 0;
 

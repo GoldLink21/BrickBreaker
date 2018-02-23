@@ -42,6 +42,15 @@ public class Paddle {
     public void paint(Graphics g){
         g.setColor(Color.DARK_GRAY);
         g.fillRect(x,y,WIDTH,HEIGHT);
+        g.setColor(Color.GRAY);
+        g.fillRect(x+WIDTH/4,y+HEIGHT/4,WIDTH/2,HEIGHT/2);
+        g.drawLine(x,y,x+WIDTH/4,y+HEIGHT/4);
+        g.drawLine((x+WIDTH*3/4),(y+HEIGHT*3/4),(x+WIDTH),(y+HEIGHT));
+        g.drawLine((x+WIDTH*3/4),(y+HEIGHT/4),(x+WIDTH),(y));
+        g.drawLine((x+WIDTH*3/4),(y+HEIGHT/4),(x+WIDTH),(y));
+        g.drawLine((x+WIDTH/4),(y+HEIGHT*3/4),(x),(y+HEIGHT));
+
+
     }
 
 }
