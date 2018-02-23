@@ -1,6 +1,9 @@
 public class Data {
     public static boolean isPlay=false,isPause=false,isMenu=true,isEnd=false;
 
+    //Used to make testing so much easier
+    public static boolean DEBUG = true;
+
     public static int score = 0;
 
     public static int getScore(){return score;}
@@ -15,6 +18,8 @@ public class Data {
     public static boolean isPause(){return isPause;}
     public static boolean isMenu(){return isMenu;}
     public static boolean isEnd(){return isEnd;}
+
+    public static boolean DEBUG(){return DEBUG;}
 
     public static void togglePause() {
         if (isPause) {

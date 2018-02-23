@@ -4,7 +4,7 @@ public class Tile {
     //Use #s to represent HP
     int x,y,hp;
 
-    //Gap(7) is the distance between tiles,Width(40),Height(20)
+    //Gap(2) is the distance between tiles,Width(65),Height(25)
     final private int HEIGHT = 25,WIDTH = 65, GAP = 2;
 
     public Tile(int x,int y,int hp){
@@ -44,11 +44,13 @@ public class Tile {
     }
 
     public void checkCollision(Ball other){
-        double fraction = 5.0;
+
+        double fraction = 9.0;
         double right = x+WIDTH-(WIDTH/fraction), left = x+(WIDTH/fraction);
         double up = y+(HEIGHT/fraction),down = y+HEIGHT-(HEIGHT/fraction);
-        if(other.getBounds().intersects(this.getBounds())&&hp>0) {
 
+        if(other.getBounds().intersects(this.getBounds())&&hp>0) {
+            //Sucky Collision
             //touching top
             if ((up > other.getY())&&(other.getDy()>0)) {
                 other.flipY();
@@ -63,6 +65,8 @@ public class Tile {
             } else if (right < other.getX()&&other.getDx()<0){
                 other.flipX();
             }
+
+
             Data.increaseScore(this);
             reduceHp();
         }

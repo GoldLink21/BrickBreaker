@@ -43,9 +43,13 @@ public class Game extends JFrame implements KeyListener {
                 leftPressed = true;
             if(e.getKeyCode() == KeyEvent.VK_P)
                 Data.togglePause();
+            if(e.getKeyCode()==KeyEvent.VK_K&&Data.DEBUG())
+                board.DEBUG_KILL();
         }else if(Data.isMenu()){
-            if(e.getKeyCode() == KeyEvent.VK_SPACE)
+            if(e.getKeyCode() == KeyEvent.VK_SPACE) {
                 Data.toggleMenu();
+                board.resetGame();
+            }
         }else if(Data.isPause()){
             if(e.getKeyCode() == KeyEvent.VK_P)
                 Data.togglePause();

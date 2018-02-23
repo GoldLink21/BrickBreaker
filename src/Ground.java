@@ -7,7 +7,7 @@ public class Ground {
 
     //Row is how many horizontally (10), col is how many vertically
     //TILE_COLUMN = 10, TILE_ROW = 12
-    private final int TILE_COLUMN = 1, TILE_ROW = 1;
+    private final int TILE_COLUMN = 10, TILE_ROW = 12;
 
     public Ground() {
         ground = new Tile[TILE_ROW][TILE_COLUMN];

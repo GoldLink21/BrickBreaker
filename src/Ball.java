@@ -1,13 +1,17 @@
 import java.awt.*;
 
 public class Ball {
-    private final int SPEED = 6,diam = 20;;
+    private final int diam = 20;
+
+    //This allows me to possibly change the speed later
+    private int SPEED = 6;
 
     int x,y;
 
-    private double dx=SPEED,dy=-SPEED;
+    private double dx=0,dy=-SPEED;
 
-    private double MAXANGLE = 5*Math.PI/12;
+    //5*Math.PI/12
+    private double MAXANGLE = Math.PI/3;
 
     Board board;
 
@@ -33,6 +37,10 @@ public class Ball {
 
         x+=dx;
         y+=dy;
+        /* NOT IMPLEMENTED
+        if(board.getTicks()==999){
+            //SPEED +=0.3;
+        }*/
     }
 
     public int getX(){return x;}
@@ -42,7 +50,11 @@ public class Ball {
     public double getDy(){return dy;}
 
     public void paint(Graphics g){
+        g.setColor(Color.WHITE);
         g.fillOval(x,y,diam,diam);
+        g.setColor(Color.BLACK);
+        int rad = diam/2;
+        g.fillOval(x+rad/2,y+rad/2,rad,rad);
     }
 
     public Rectangle getBounds(){
@@ -56,40 +68,32 @@ public class Ball {
         dy*=-1;
     }
 
+    public void reset(Board board){
+        dx=0;
+        dy=-SPEED;
+        setPosition(board.getWidth()/2,board.getPaddleY()-50);
+    }
+
     public void checkCollisions(Paddle other,Ground ground){
 
         //This is for the paddle
         if(getBounds().intersects(other.getBounds())){
             double paddleX = other.getBounds().getX();
             double paddleC = other.getBounds().getWidth()/2;
-            double ballX = x;
 
-            double bounceAngle = MAXANGLE * (((paddleX + paddleC) - ballX)/paddleC);
+            double bounceAngle = MAXANGLE * (((paddleX + paddleC) - x)/paddleC);
 
-            if(x+(diam/2) < paddleX)
-                ballX = x;
-            else if(x + diam/2 > paddleX + other.getBounds().getWidth())
-                ballX = x;
-            else
-                ballX = x + diam/2;
             dy = (int) -(SPEED * Math.cos(bounceAngle));
             dx = (int)(SPEED*-Math.sin(bounceAngle));
         }
 
-        //Collision for Tiles
-
-        for (int col = ground.getColumns() - 1; col >= 0; col--) {
-            for (int row = ground.getRows() - 1; row >= 0; row--) {
-                if(getBounds().intersects(ground.getBounds(row,col))){
-
-                }
-            }
-        }
+        //If ball goes below line
         if(y+diam/2.0>board.getPaddleY()){
             Data.setScore(Data.getScore()-50);
             setPosition(board.getWidth()/2,board.getPaddleY()-15);
             flipY();
         }
     }
+
 
 }
