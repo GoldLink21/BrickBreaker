@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Paddle {
     private int x,y;
-    private final int WIDTH = 100,HEIGHT = 20,SPEED = 7;
+    private final int WIDTH = 100,HEIGHT = 20,SPEED = /*7*/10;
 
     Game game;
     Ball ball;
@@ -28,6 +28,7 @@ public class Paddle {
                 x+=SPEED;
             }
         }
+
     }
 
     public Rectangle getBounds(){
