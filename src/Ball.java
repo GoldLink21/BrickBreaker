@@ -4,7 +4,7 @@ public class Ball {
     private final int diam = 20;
 
     //This allows me to possibly change the speed later
-    private int SPEED = 6;
+    private int SPEED = 7;
 
     int x,y;
 
