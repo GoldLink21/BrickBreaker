@@ -33,7 +33,8 @@ public class Tile {
      public void paint(Graphics g){
         g.fillRect(x,y,WIDTH,HEIGHT);
         g.setColor(Color.BLACK);
-        //g.setColor(Color.getColor(Ground.getCurColor()).brighter());
+        //
+         // g.setColor(Color.getColor(Ground.getCurColor()).brighter());
         g.fillRect(x+WIDTH/4+GAP/2,y+HEIGHT/4,WIDTH/2,HEIGHT/2);
     }
 
